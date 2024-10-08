@@ -1,20 +1,25 @@
 {
   "compilerOptions": {
-    "target": "es6", // Versão do JavaScript para a qual o TypeScript será compilado
-    "module": "commonjs", // Sistema de módulos a ser utilizado
+    "jsx": "react",
+    "sourceMap": true,
+    "target": "Es2022",
+    "lib": ["ES2023"], // Versão do JavaScript para a qual o TypeScript será compilado
+    "module": "Node16", // Sistema de módulos a ser utilizado
     "strict": true, // Ativa todas as verificações de tipo estritas
     "esModuleInterop": true, // Habilita a interoperabilidade entre módulos ES e CommonJS
     "skipLibCheck": true, // Ignora a verificação de tipo de arquivos de definição (.d.ts)
     "forceConsistentCasingInFileNames": true, // Garante que o uso de letras maiúsculas/minúsculas nos nomes dos arquivos seja consistente
     "outDir": "./dist", // Diretório de saída para os arquivos compilados
-    // "rootDir": "./src", // Diretório raiz dos arquivos de origem
+    "rootDir": "./src", // Diretório raiz dos arquivos de origem
     "resolveJsonModule": true, // Permite a importação de arquivos JSON
-    "types": ["node"] // Inclui tipos para o Node.js
+    "moduleResolution": "Node16",
+    "allowSyntheticDefaultImports": true,
+    "typeRoots": ["./node_modules/@types"],
+    "types": ["node", "jest"] // Inclui tipos para o Node.js
   },
-  "include": [
-    "src/**/*" // Inclui todos os arquivos dentro da pasta src
-  ],
+  "include": ["src/**/*"],
   "exclude": [
-    "node_modules" // Exclui a pasta node_modules
+    "node_modules",
+    "**/*.spec.ts" // Exclui a pasta node_modules e todos os arquivos que terminem em .spec.ts
   ]
 }

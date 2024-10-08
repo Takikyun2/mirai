@@ -1,4 +1,7 @@
-import { Model } from "objection";
+import { Model } from "objection"; // importa o objeto Model
+import knexInstance from "../db/knex"; // importa a instância do knex
+
+Model.knex(knexInstance); // associa o knex ao objeto Model
 
 export class User extends Model {
   static tableName = "users"; // nome da tabela no banco
@@ -6,15 +9,15 @@ export class User extends Model {
   id!: number; // chave primária
   username!: string; // nome de usuario
   email!: string; // email
-  password!: string; // hash da senha
+  password_hash!: string; // hash da senha
   role!: string; // permissão
-  created_At!: string; // data de criação
+  created_at!: string; // data de criação
 
   // relacionamentos
 
   static relationMappings = {
     videos: {
-      // nome do relacionamento
+      // relacionamento com a tabela videos
       relation: Model.HasManyRelation, // relacionamento de muitos para um
       modelClass: `${__dirname}/video`, // classe do relacionamento
       join: {
